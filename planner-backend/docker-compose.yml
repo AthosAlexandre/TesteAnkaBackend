@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: planner
+      POSTGRES_PASSWORD: plannerpw
+      POSTGRES_DB: plannerdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./planner-backend
+    environment:
+      DATABASE_URL: postgresql://planner:plannerpw@db:5432/plannerdb
+      PORT: 3001
+      NODE_ENV: production
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+
+volumes:
+  pg_data:
