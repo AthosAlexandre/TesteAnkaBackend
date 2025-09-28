@@ -1,0 +1,17 @@
+# dependências
+planner-backend/node_modules/
+
+# build / produção
+planner-backend/dist/
+planner-backend/build/
+
+# logs
+*.log
+
+# editor / sistema
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ambiente
+.env
